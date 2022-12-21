@@ -31,7 +31,7 @@ const todoSlice = createSlice({
     });
     builder.addCase(getTodoThunk.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.data = action.payload;
+      state.todos = action.payload;
     });
     builder.addCase(getTodoThunk.rejected, (state, action) => {
       state.isLoading = false;

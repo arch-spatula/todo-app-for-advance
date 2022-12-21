@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import CustomForm from "./components/CustomForm";
-import { getTodoThunk } from "./redux/modules/todoSlice";
+import { TodoList } from "./components";
 
 function App() {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state);
-  useEffect(() => {
-    dispatch(getTodoThunk());
-    console.log(data.todos.data);
-  }, []);
   return (
     <div className="App">
       <CustomForm />
+      <TodoList heading="Working" kind="Working" />
+      <TodoList heading="Done..." kind="Done" />
     </div>
   );
 }
