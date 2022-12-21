@@ -11,7 +11,7 @@ const initialState = {
 
 export const getTodoThunk = createAsyncThunk(
   "todo/getTodo",
-  async (payload, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const data = await axios.get(BASE_URL);
       return thunkAPI.fulfillWithValue(data.data);
@@ -26,7 +26,21 @@ export const addTodoThunk = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       await axios.post(BASE_URL, payload);
+      // read
+      const data = await axios.get(BASE_URL);
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err.message);
+    }
+  }
+);
 
+export const deleteTodoThunk = createAsyncThunk(
+  "todo/deleteTodo",
+  async (payload, thunkAPI) => {
+    try {
+      await axios.delete(BASE_URL + `/${payload}`);
+      // read
       const data = await axios.get(BASE_URL);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (err) {
@@ -62,6 +76,19 @@ const todoSlice = createSlice({
       state.todos = action.payload;
     });
     builder.addCase(addTodoThunk.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    });
+
+    // deleteTodo
+    builder.addCase(deleteTodoThunk.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(deleteTodoThunk.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.todos = action.payload;
+    });
+    builder.addCase(deleteTodoThunk.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     });
