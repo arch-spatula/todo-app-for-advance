@@ -41,4 +41,4 @@ yarn json-server --watch db.json --port 3001 # 모의 서버를 실행합니다.
 
 # Tech Stack
 
-React, Redux, JSON Server, Style Component, react-router-dom
+React, Redux, JSON Server, Style Component, react-router-dom, axios
