@@ -39,6 +39,29 @@ yarn start # 리액트를 실행합니다.
 yarn json-server --watch db.json --port 3001 # 모의 서버를 실행합니다.
 ```
 
+# 시작 DB
+
+```json
+{
+  "todos": [
+    {
+      "id": "U9kNyLAXG5JXGd5dI2bzp",
+      "title": "리덕스 천하통일은 영원할 것이라고 인정하기",
+      "content": "Jotai, Zustand, ContextAPI & React-Query는 마음만 품기",
+      "kind": "Working"
+    },
+    {
+      "id": "glUoDWAuA_GUt7tk1P--8",
+      "title": "Vite 몰래 혼자쓰기",
+      "content": "webpack으로 빌드하는 내용이 강의자료에 없으면 실습은 Vite으로 설치하고 혼자 꿀빨기",
+      "kind": "Done"
+    }
+  ]
+}
+```
+
+초기 DB로 돌아가게 만들고 싶을 경우 위 코드를 붙여주시기 바랍니다.
+
 # Tech Stack
 
 React, Redux, JSON Server, Style Component, react-router-dom, axios
