@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoThunk } from "../redux/modules/todoSlice";
 import { TodoItem } from "./index";
+import styled from "styled-components";
 
 const TodoList = ({ heading, kind }) => {
   const dispatch = useDispatch();
