@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodoThunk } from "../redux/modules/todoSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const CustomForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -9,9 +13,20 @@ const CustomForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      addTodoThunk({
+        id: nanoid(),
+        title,
+        content,
+        kind: "Working",
+      })
+    );
+
     setTitle("");
     setContent("");
   };
+
+  const canSave = [title, content].every(Boolean);
 
   return (
     <div>
@@ -30,7 +45,7 @@ const CustomForm = () => {
           value={content}
           onChange={handleOnChangeContent}
         />
-        <button>추가</button>
+        <button disabled={!canSave}>추가</button>
       </form>
     </div>
   );
