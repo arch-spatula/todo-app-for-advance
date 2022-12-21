@@ -13,9 +13,8 @@ export const getTodoThunk = createAsyncThunk(
   "todo/getTodo",
   async (payload, thunkAPI) => {
     try {
-      const data = axios.get(BASE_URL);
-      console.log(data);
-      return thunkAPI.fulfillWithValue();
+      const data = await axios.get(BASE_URL);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (err) {
       return thunkAPI.rejectWithValue(err.message);
     }
