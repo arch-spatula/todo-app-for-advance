@@ -15,7 +15,7 @@ Commit Message 규칙 (Commit Convention)
 `ETC`: 기타 수정
 
 ```txt
-(유형), 커밋 제목
+(유형), 커밋 제목 #이슈번호
 
 (내용을 입력합니다. 3줄이하 생략가능합니다.)
 ```
