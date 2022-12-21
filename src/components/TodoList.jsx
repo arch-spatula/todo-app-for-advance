@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoThunk } from "../redux/modules/todoSlice";
+import { TodoItem } from "./index";
 
 const TodoList = ({ heading, kind }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const TodoList = ({ heading, kind }) => {
 
   const renderedTodoItems = todos
     .filter((item) => item.kind === kind)
-    .map((item) => <li key={item.id}>{item.title}</li>);
+    .map((item) => <TodoItem key={item.id} {...item} />);
 
   return (
     <div>
