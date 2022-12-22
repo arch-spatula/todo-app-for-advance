@@ -14,7 +14,12 @@ const TodoList = ({ heading, kind }) => {
 
   // 통신 실패
   if (error) {
-    return <div>{error.message}</div>;
+    return (
+      <div>
+        <h2>{heading}</h2>
+        <h3>{error}</h3>
+      </div>
+    );
   }
 
   const renderedTodoItems = todos
